@@ -1,4 +1,4 @@
-@extends('layouts.posts.main')
+@extends('layouts.main')
 @section('content')
     <a href="{{ route('posts.index') }}">назад</a>
     <h1>{{ $post->title }}</h1>
