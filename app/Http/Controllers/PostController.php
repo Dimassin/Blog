@@ -8,13 +8,13 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     public function index(): View
     {
-        $posts = Post::all();
+        $paginatedPosts = $this->service->index();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('paginatedPosts'));
     }
 
     public function show(Post $post): View
@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        Post::create($request->validated());
+        $this->service->store($request->validated());
 
         return redirect()->route('posts.index')->with('message', 'Пост успешно создан');
     }
@@ -41,13 +41,15 @@ class PostController extends Controller
 
     public function update(Post $post, UpdateRequest $request): RedirectResponse
     {
-        $post->update($request->validated());
+        $this->service->update($post, $request->validated());
+
         return redirect()->route('posts.show', $post->id)->with('message', 'Пост успешно обновлён');
     }
 
     public function destroy(Post $post): RedirectResponse
     {
-        $post->delete();
+        $this->service->delete($post);
+
         return redirect()->route('posts.index')->with('message', 'Пост успешно удалён');
     }
 }
