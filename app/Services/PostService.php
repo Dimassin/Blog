@@ -9,7 +9,7 @@ class PostService
 {
     public function index(): LengthAwarePaginator
     {
-        return Post::paginate(10);
+        return Post::query()->orderBy('id', 'desc')->paginate(10);
     }
 
     public function store($data): void

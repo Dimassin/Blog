@@ -7,6 +7,6 @@
     <form action="{{ route('posts.destroy', $post->id) }}" method="post">
         @csrf
         @method('delete')
-        <button type="submit">Удалить</button>
+        <button type="submit" class="btn btn-danger">Удалить</button>
     </form>
 @endsection

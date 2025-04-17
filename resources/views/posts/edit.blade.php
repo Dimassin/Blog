@@ -4,10 +4,12 @@
     <form action="{{ route('posts.update', $post->id) }}" method="post">
         @csrf
         @method('patch')
-        <label for="title">Название</label>
-        <input type="text" id="title" name="title" value="{{ $post->title }}">
-        <label for="description">Описание</label>
-        <textarea name="description" id="description">{{ $post->description }}</textarea>
-        <button type="submit">Обновить пост</button>
+        <div class="form-group mb-3">
+            <label for="title">Название</label>
+            <input class="form-control" type="text" id="title" name="title" value="{{ $post->title }}">
+            <label for="description">Описание</label>
+            <textarea class="form-control" name="description" id="description">{{ $post->description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Обновить пост</button>
     </form>
 @endsection
