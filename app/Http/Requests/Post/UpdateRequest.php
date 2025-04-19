@@ -24,6 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'string|max:5000',
+            'category_id' => '',
         ];
     }
 }

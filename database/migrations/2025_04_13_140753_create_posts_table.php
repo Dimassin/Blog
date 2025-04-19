@@ -18,10 +18,12 @@ return new class extends Migration
                 $table->text('description')->nullable();
                 $table->unsignedBigInteger('likes')->default(0);
                 $table->unsignedBigInteger('dislikes')->default(0);
+                $table->unsignedBigInteger('category_id')->nullable();
                 $table->boolean('is_published')->default(true);
                 $table->timestamps();
 
                 $table->softDeletes();
+                $table->foreign('category_id')->references('id')->on('categories');
             });
         }
     }

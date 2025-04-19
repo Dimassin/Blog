@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +23,11 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'string|max:5000',
-            'category_id' => ''
+            'category' => 'nullable',
+            'integer',
+            Rule::when($this->category != 0, [
+                Rule::exists('categories', 'id')
+            ])
         ];
     }
 }
