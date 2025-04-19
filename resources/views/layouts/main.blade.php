@@ -10,7 +10,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-<div class="container">
+<div class="container mx-auto">
     @yield('content')
 </div>
 </body>

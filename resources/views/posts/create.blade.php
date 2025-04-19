@@ -8,6 +8,11 @@
             <input class="form-control" type="text" id="title" name="title">
             <label for="description">Описание</label>
             <textarea class="form-control" name="description" id="description"></textarea>
+            <select class="browser-default custom-select" name="category_id">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Создать пост</button>
     </form>

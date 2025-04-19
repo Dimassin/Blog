@@ -3,21 +3,27 @@
 namespace App\Services;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostService
 {
-    public function index(): LengthAwarePaginator
+    public function index(array $data): LengthAwarePaginator
     {
-        return Post::query()->orderBy('id', 'desc')->paginate(10);
+        return Post::query()
+            ->when($data['category'], function ($query, $categoryId) {
+                $query->where('category_id', $categoryId);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
     }
 
-    public function store($data): void
+    public function store(array $data): void
     {
         Post::create($data);
     }
 
-    public function update(Post $post, $data): void
+    public function update(Post $post, array $data): void
     {
         $post->update($data);
     }

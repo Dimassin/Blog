@@ -9,6 +9,13 @@
             <input class="form-control" type="text" id="title" name="title" value="{{ $post->title }}">
             <label for="description">Описание</label>
             <textarea class="form-control" name="description" id="description">{{ $post->description }}</textarea>
+            <select class="browser-default custom-select" name="category_id">
+                @foreach($categories as $category)
+                    <option
+                        {{ $category->id === $post->category->id ? 'selected' : '' }}
+                        value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Обновить пост</button>
     </form>
