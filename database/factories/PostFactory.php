@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class PostFactory extends Factory
             'likes' => rand(1, 10000),
             'dislikes' => rand(1, 10000),
             'is_published' => true,
+            'category_id' => Category::get()->random()->id,
             'created_at' => now(),
             'updated_at' => now(),
         ];

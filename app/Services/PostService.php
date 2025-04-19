@@ -11,11 +11,12 @@ class PostService
     public function index(array $data): LengthAwarePaginator
     {
         return Post::query()
-            ->when($data['category'], function ($query, $categoryId) {
+            ->when($data['category'] ?? 0, function ($query, $categoryId) {
                 $query->where('category_id', $categoryId);
             })
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
     }
 
     public function store(array $data): void
