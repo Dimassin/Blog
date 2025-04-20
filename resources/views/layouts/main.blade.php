@@ -9,9 +9,33 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
-<div class="container mx-auto">
-    @yield('content')
+<body class="container mx-auto">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('posts.index') }}">Главная</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    @can('view', auth()->user())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.create') }}">Создать пост</a>
+                        </li>
+                    @endcan
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
+@yield('content')
 </body>
 </html>

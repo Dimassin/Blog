@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    <a href="{{ route('posts.index') }}">назад</a>
     <form action="{{ route('posts.store') }}" method="post">
         @csrf
         <div class="form-group">
