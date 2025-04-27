@@ -4,9 +4,7 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/posts');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('posts', PostController::class)
