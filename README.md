@@ -22,22 +22,28 @@ DB_USERNAME=your_db_user
 DB_PASSWORD=your_db_password
 ```
 
-```bash
 4. Генерация ключа:
+```bash
 php artisan key:generate
 ```
 
-```bash
 5. Миграции и сиды:
+```bash
 php artisan migrate --seed
 ```
 
-```bash
 6. Установка фронтенда:
+```bash
 npm install && npm run dev
 ```
 
-```bash
 7. Запуск сервера:
+```bash
 php artisan serve
+```
+
+8. Тестовый пользователь с админскими правами
+```ini
+почта: admin@gmail.com
+пароль: password
 ```
